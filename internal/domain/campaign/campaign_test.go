@@ -7,11 +7,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+var (
+	name     = "Campaign X"
+	content  = "Content X"
+	contacts = []string{"emai1@email.com", "email2@email.com"}
+)
+
 func Test_NewCampaign_CreateCampaign(t *testing.T) {
 	assert := assert.New(t)
-	name := "Campaign X"
-	content := "Content X"
-	contacts := []string{"emai1@email.com", "email2@email.com"}
 
 	campaign := NewCampaign(name, content, contacts)
 
@@ -22,9 +25,6 @@ func Test_NewCampaign_CreateCampaign(t *testing.T) {
 
 func Test_NewCampaign_IDIsNotNil(t *testing.T) {
 	assert := assert.New(t)
-	name := "Campaign X"
-	content := "Content X"
-	contacts := []string{"emai1@email.com", "email2@email.com"}
 
 	campaign := NewCampaign(name, content, contacts)
 
@@ -33,9 +33,6 @@ func Test_NewCampaign_IDIsNotNil(t *testing.T) {
 
 func Test_NewCampaign_NameIsNotNil(t *testing.T) {
 	assert := assert.New(t)
-	name := "Campaign X"
-	content := "Content X"
-	contacts := []string{"emai1@email.com", "email2@email.com"}
 
 	campaign := NewCampaign(name, content, contacts)
 
@@ -44,20 +41,14 @@ func Test_NewCampaign_NameIsNotNil(t *testing.T) {
 
 func Test_NewCampaign_ContentIsNotNil(t *testing.T) {
 	assert := assert.New(t)
-	name := "Campaign X"
-	content := "Content X"
-	contacts := []string{"emai1@email.com", "email2@email.com"}
 
 	campaign := NewCampaign(name, content, contacts)
 
 	assert.NotNil(campaign.Content)
 }
 
-func Test_NewCampaign_CreatedOnIsNotNil(t *testing.T) {
+func Test_NewCampaign_CreatedOnMustBeNow(t *testing.T) {
 	assert := assert.New(t)
-	name := "Campaign X"
-	content := "Content X"
-	contacts := []string{"emai1@email.com", "email2@email.com"}
 	now := time.Now().Add(-time.Minute)
 
 	campaign := NewCampaign(name, content, contacts)
