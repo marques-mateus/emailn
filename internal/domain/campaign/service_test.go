@@ -28,6 +28,17 @@ var (
 	service = Service{}
 )
 
+func Test_Create_CreateCampaign(t *testing.T) {
+
+	repositoryMock := new(respositoryMock)
+	repositoryMock.On("Save", mock.Anything).Return(nil)
+	service.Repository = repositoryMock
+
+	service.Create(newCampaign)
+
+	repositoryMock.AssertExpectations(t)
+}
+
 func Test_Create_ValidateDomainError(t *testing.T) {
 	assert := assert.New(t)
 	newCampaign := newCampaign
