@@ -45,4 +45,5 @@ func Test_CampaignsGetById_ShouldReturnError(t *testing.T) {
 	_, _, err := handler.CampaignsGetById(rr, req)
 
 	assert.Equal(errExpected.Error(), err.Error())
+
 }
