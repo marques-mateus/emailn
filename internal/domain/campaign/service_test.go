@@ -19,6 +19,11 @@ func (r *respositoryMock) Save(campaign *Campaign) error {
 	return args.Error(0)
 }
 
+func (r *respositoryMock) Update(campaign *Campaign) error {
+	args := r.Called(campaign)
+	return args.Error(0)
+}
+
 func (r *respositoryMock) Get() ([]Campaign, error) {
 	return nil, nil
 }
@@ -29,6 +34,10 @@ func (r *respositoryMock) GetBy(id string) (*Campaign, error) {
 		return nil, args.Error(1)
 	}
 	return args.Get(0).(*Campaign), args.Error(1)
+}
+
+func (r *respositoryMock) Delete(campaign *Campaign) error {
+	return nil
 }
 
 var (
